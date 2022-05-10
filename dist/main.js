@@ -1,1 +1,1 @@
-console.log("hello");
+(()=>{"use strict";console.log({title:"Chores",description:"Do the laundry",dueDate:"05/23/2022",priority:"low"})})();
