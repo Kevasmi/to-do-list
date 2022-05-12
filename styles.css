@@ -1,10 +1,5 @@
 html {
     box-sizing: border-box;
-    background: url('images/banana-pudding.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
 }
 
 *, *:before, *:after {
@@ -19,10 +14,42 @@ body {
     width: 100vw;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 8fr;
+    grid-template-rows: 3em 15fr;
     grid-template-areas: 
     "header header"
     "aside  main";
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.modal-content {
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    padding: 20px;
+    width: 70%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .2), 0 7px 20px 0 rgba(0, 0, 0, .17);
+}
+
+.close-Btn {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+}
+
+.close-Btn:hover, .close-Btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 header {
@@ -35,16 +62,38 @@ header {
 
 header > h1 {
     color: white;
+    font-size: 2rem;
 }
 
 aside {
     grid-area: aside;
     display: flex;
     flex-direction: column;
-    background-color: #d3d3d3;
+    padding: 1rem;
+    background-color: hsl(0, 0%, 96%);
+}
+
+.wrapper {
+    border: 1px solid lightgrey;
+    margin-bottom: 3rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.wrapper > h2 {
+    border-bottom: 1px solid lightgrey;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.wrapper > h2:hover {
+    background-color: hsl(0, 0%, 80%);
+}
+
+.wrapper > h2:active {
+    background-color: hsl(0, 0%, 70%);
 }
 
 main {
     grid-area: main;
-    background-color: antiquewhite;
+    background-color: hsl(0, 0%, 97%);
 }
