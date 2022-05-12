@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log({title:"Chores",description:"Do the laundry",dueDate:"05/23/2022",priority:"low"})})();
+(()=>{"use strict";let o=[];o.push({title:"Chores",description:"Do the laundry",dueDate:"05/23/2022",priority:"low"}),console.log(o),console.log(o[0].title),console.log(o[0].description),console.log(o[0].dueDate),console.log(o[0].priority)})();
