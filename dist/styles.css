@@ -202,7 +202,7 @@ main {
     justify-content: center;
     /* align-items: center; */
     padding: .5rem;
-    border: 1px solid lightgrey;
+    border: 1px solid rgb(107, 107, 107);
     border-radius: 15px;
 }
 
@@ -224,11 +224,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid lightgrey;
     padding: 0rem;
 }
 
 .new-task:hover {
-    background-color: hsl(0, 0%, 80%);
+    background-color: hsl(0, 0%, 85%);
+    border: 1px solid rgb(107, 107, 107);
     cursor: pointer;
 }
 
