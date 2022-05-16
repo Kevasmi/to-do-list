@@ -1,7 +1,0 @@
-function createModal() {
-    
-}
-
-function closeModal() {
-
-}

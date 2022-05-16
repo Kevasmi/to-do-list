@@ -1,18 +1,25 @@
+import {cacheDom} from './cacheDom'
+
 function bindEvent() {
-    const button = document.querySelector('.button');
-    const modalContainer = document.querySelector('.modal-container');
-    const modalCloseBtn = document.querySelector('.close-btn');
-    button.addEventListener('click', () => {
-        console.log('hello');
-    })
+    const cache = cacheDom();
+
+    cache.projectBtn.addEventListener('click', () => {
+        cache.projectWrapper.classList.toggle('height');
+        cache.dropDownArrow.classList.toggle('rotate');
+    });
+
+    cache.newTaskBtn.addEventListener('click', () => {
+        cache.modalContainer.classList.add('show');
+    });
     
-    button.addEventListener('click', () => {
-        modalContainer.classList.add('show');
-    })
-    
-    modalCloseBtn.addEventListener('click', () => {
-        modalContainer.classList.remove('show');
-    })
+    cache.modalCloseBtn.addEventListener('click', () => {
+        cache.modalContainer.classList.remove('show');
+    });
+
+    cache.submitBtn.addEventListener('click', () => {
+        console.log(cache.titleInput.value);
+    });
+
 };
 
 export {

@@ -1,4 +1,3 @@
-import {createProject} from './createProject'
 import {createTask} from './createTask'
 import {bindEvent} from './bindEvents'
 
