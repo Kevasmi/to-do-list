@@ -32,7 +32,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* transition: opacity .3s ease; */
+    transition: opacity .3s ease;
 }
 
 .modal-container.show {
@@ -138,6 +138,7 @@ aside {
 }
 
 .wrapper > h2 {
+    background-color: hsl(0, 0%, 100%);
     border-bottom: 1px solid lightgrey;
     padding: 1rem;
     cursor: pointer;
@@ -149,6 +150,33 @@ aside {
 
 .wrapper > h2:active {
     background-color: hsl(0, 0%, 70%);
+}
+
+.project-menu {
+    background-color: hsl(0, 0%, 97%);
+}
+
+.height {
+    height: 20rem;
+}
+
+.projects {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.projects > span {
+    margin-left: auto;
+}
+
+.drop-down {
+    height: 2rem;
+    width: 2rem;
+}
+
+.rotate {
+    transform: rotate(180deg);
 }
 
 main {
@@ -168,12 +196,35 @@ main {
     margin-right: auto;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    padding: .5rem;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+}
+
+#date-project-container {
+    display: flex;
+    gap: 1rem;
+}
+
+#date-project-container > p {
+    display: flex;
+    justify-content: center;
+    width: 5rem;
+    font-size: .9rem;
+    border: .5px solid rgb(67, 207, 12);
+    border-radius: 15px;
+}
+
 .new-task {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 15px;
-    border: 1px solid lightgrey;
+    padding: 0rem;
 }
 
 .new-task:hover {

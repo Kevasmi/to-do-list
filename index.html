@@ -21,7 +21,7 @@
                         <label for="title">Title </label>
                         <input type="text" name="title" id="title" required>
                         <label for="description">Description </label>
-                        <input type="text" name="description" id="description" required>
+                        <input type="text" name="description" id="description">
                         <label for="due-date">Due Date</label>
                         <input type="text" name="due-date" id="due-date" required>
                         <label for="priority">Priority</label>
@@ -38,25 +38,28 @@
         <h1>To-Do List</h1>
     </header>
     <aside>
-        <section class="task wrapper">
+        <section class="task-menu wrapper">
             <h2 class="tasks">Tasks</h2>
             <h2 class="today">Today</h2>
-            <h2 class="next-week">Next Week</h2>
+            <h2 class="week">Next Week</h2>
         </section>
-        <section class="project wrapper">
-            <h2 class="projects">Projects</h2>
-            
+        <section class="project-menu wrapper">
+            <h2 class="projects">Projects<span><img class="drop-down" src="../images/drop-down-arrow.png" alt="Drop-down arrow icon"></span></h2>
         </section>
     </aside>
     <main>
         <section class="tasks-container">
-            <div class="new-task"><h2>+ Create A New Task</h2></div>
-            <div class="new-task"><h2>+ Create A New Task</h2></div>
-            <div class="new-task"><h2>+ Create A New Task</h2></div>
-            <div class="new-task"><h2>+ Create A New Task</h2></div>
-
+            <div class="active-tasks">
+                <div class="task container">
+                    <h3>Chores</h3><br />
+                    <p>Blah blah blah</p><br />
+                    <div id="date-project-container">
+                        <p class="date">5/16/2022</p><p class="project">Chores</p>
+                    </div>
+                </div>
+            </div>
+            <div class="new-task container"><h2 class="new-task-button">+ Create A New Task</h2></div>
         </section>
-        <button class="button">Click Me!</button>
     </main>
 </body>
 </html>
