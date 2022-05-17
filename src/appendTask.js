@@ -8,10 +8,10 @@ function appendTask() {
     const description = cache.descInput.value;
     const dueDate = cache.dateInput.value;
     const priority = cache.priorityInput.value;
-    const task = createTask(title, description, dueDate, priority);
+    const project = cache.projectInput.value;
+    const task = createTask(title, description, dueDate, priority, project);
     console.log(task);
     cache.activeTasksContainer.appendChild(task);
-    // cache.modalContainer.classList.remove('show');
     closeModal();
 }
 

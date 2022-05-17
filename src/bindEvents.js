@@ -1,6 +1,5 @@
 import {cacheDom} from './cacheDom';
 import { closeModal, openModal } from './modal';
-import {createTask} from './createTask';
 import { appendTask } from './appendTask';
 
 function bindEvent() {
@@ -12,12 +11,10 @@ function bindEvent() {
     });
 
     cache.newTaskBtn.addEventListener('click', () => {
-        // cache.modalContainer.classList.add('show');
         openModal();
     });
     
     cache.modalCloseBtn.addEventListener('click', () => {
-        // cache.modalContainer.classList.remove('show');
         closeModal();
     });
 
@@ -25,6 +22,9 @@ function bindEvent() {
         appendTask();
     });
 
+    cache.taskCloseBtn.addEventListener('click', (e) => {
+        e.target.parentNode.remove();
+    });
 };
 
 export {

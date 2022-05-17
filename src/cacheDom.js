@@ -13,8 +13,10 @@ function cacheDom() {
     const descInput = document.querySelector('#description');
     const dateInput = document.querySelector('#due-date');
     const priorityInput = document.querySelector('#priority');
+    const projectInput = document.querySelector('#project');
     const submitBtn = document.querySelector('#submit-btn');
-    return {tasksBtn, todayBtn, weekBtn, projectWrapper, projectBtn, dropDownArrow, activeTasksContainer, newTaskBtn, modalContainer, modalCloseBtn, titleInput, descInput, dateInput, priorityInput, submitBtn}
+    const taskCloseBtn = document.querySelector('.close-button');
+    return {tasksBtn, todayBtn, weekBtn, projectWrapper, projectBtn, dropDownArrow, activeTasksContainer, newTaskBtn, modalContainer, modalCloseBtn, titleInput, descInput, dateInput, priorityInput, projectInput, submitBtn, taskCloseBtn}
 };
 
 export {

@@ -1,5 +1,3 @@
-import { cacheDom } from "./cacheDom";
-
 function createTask(title, description, dueDate, priority, project) {
     const task = {
         title: title,
@@ -12,14 +10,15 @@ function createTask(title, description, dueDate, priority, project) {
 };
 
 function createTaskDOM(task) {
-    const cache = cacheDom();
     const taskContainer = document.createElement('div');
     const taskTitle = document.createElement('h3');
     const taskDescription = document.createElement('p');
     const dateProjectCont = document.createElement('div');
     const taskDueDate = document.createElement('p');
     const taskProject = document.createElement('p');
+    const taskCloseBtn = document.createElement('button');
     taskContainer.classList.add('task', 'container');
+    taskCloseBtn.classList.add('close-button');
     dateProjectCont.setAttribute('id', 'date-project-container');
     taskDueDate.classList.add('date');
     taskProject.classList.add('project');
@@ -27,11 +26,16 @@ function createTaskDOM(task) {
     taskDescription.textContent = task.description;
     taskDueDate.textContent = task.dueDate;
     taskProject.textContent = task.project;
+    taskCloseBtn.innerHTML = '&times;'
     taskContainer.appendChild(taskTitle);
     taskContainer.appendChild(taskDescription);
     taskContainer.appendChild(dateProjectCont);
+    taskContainer.appendChild(taskCloseBtn);
     dateProjectCont.appendChild(taskDueDate);
     dateProjectCont.appendChild(taskProject);
+    taskCloseBtn.addEventListener('click', (e) => {
+        e.target.parentNode.remove();
+    });
     return taskContainer
 };
 
