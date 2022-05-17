@@ -211,7 +211,7 @@ main {
     gap: 1rem;
 }
 
-#date-project-container > p {
+.date, .project {
     display: flex;
     justify-content: center;
     width: 5rem;
