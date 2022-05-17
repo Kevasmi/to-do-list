@@ -1,6 +1,7 @@
 import {cacheDom} from './cacheDom';
 import { closeModal, openModal } from './modal';
 import {createTask} from './createTask';
+import { appendTask } from './appendTask';
 
 function bindEvent() {
     const cache = cacheDom();
@@ -11,23 +12,17 @@ function bindEvent() {
     });
 
     cache.newTaskBtn.addEventListener('click', () => {
-        // openModal();
-        cache.modalContainer.classList.add('show');
+        // cache.modalContainer.classList.add('show');
+        openModal();
     });
     
     cache.modalCloseBtn.addEventListener('click', () => {
-        // closeModal();
-        cache.modalContainer.classList.remove('show');
+        // cache.modalContainer.classList.remove('show');
+        closeModal();
     });
 
     cache.submitBtn.addEventListener('click', () => {
-        const title = cache.titleInput.value;
-        const description = cache.descInput.value;
-        const dueDate = cache.dateInput.value;
-        const priority = cache.priorityInput.value;
-        const task = createTask(title, description, dueDate, priority);
-        console.log(task);
-        cache.activeTasksContainer.appendChild(task);
+        appendTask();
     });
 
 };

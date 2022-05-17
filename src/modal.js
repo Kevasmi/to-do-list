@@ -1,3 +1,7 @@
+import { cacheDom } from "./cacheDom";
+
+const cache = cacheDom();
+
 function openModal() {
     cache.modalContainer.classList.add('show');
 };
