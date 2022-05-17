@@ -1,11 +1,11 @@
-import {createTask} from './createTask'
-import {bindEvent} from './bindEvents'
-import {cacheDom} from './cacheDom';
-// import {appendTask} from './appendTask';
+import {bindEvent} from './bindEvents';
+import {makeTaskArray} from './makeGlobalArray';
+import { cacheDom } from './cacheDom';
+import { createTask } from './createTask';
 
 const cache = cacheDom();
+const tasks = makeTaskArray();
 bindEvent();
-let task1 = createTask('Chores', 'Do the laundry', '05/23/2022', 'low');
-let tasks = [];
-tasks.push(task1);
-// console.log(tasks);
+console.log(tasks);
+const z = JSON.parse(localStorage.getItem('tasks'));
+console.log(z[0].title);

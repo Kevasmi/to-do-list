@@ -32,12 +32,13 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    transition: opacity .3s ease;
+    /* transition: opacity .3s ease; */
 }
 
 .modal-container.show {
     pointer-events: auto;
     opacity: 1;
+    z-index: 2;
 }
 
 .modal {
@@ -236,8 +237,9 @@ main {
 .date, .project {
     display: flex;
     justify-content: center;
-    width: 5rem;
+    width: 6rem;
     font-size: .9rem;
+    padding: .1rem;
     border: .5px solid rgb(67, 207, 12);
     border-radius: 15px;
 }

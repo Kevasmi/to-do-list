@@ -1,3 +1,7 @@
+import { makeTaskArray } from "./makeGlobalArray";
+
+const tasks = makeTaskArray();
+
 function createTask(title, description, dueDate, priority, project) {
     const task = {
         title: title,
@@ -6,7 +10,12 @@ function createTask(title, description, dueDate, priority, project) {
         priority: priority,
         project: project != null ? project : 'none'
     };
-    return createTaskDOM(task);
+    tasks.push(task);
+    const taskDom = createTaskDOM(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    // console.log(taskDom);
+    console.log(tasks);
+    return taskDom
 };
 
 function createTaskDOM(task) {

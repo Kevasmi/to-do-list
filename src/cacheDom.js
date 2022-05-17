@@ -9,6 +9,7 @@ function cacheDom() {
     const newTaskBtn = document.querySelector('.new-task');
     const modalContainer = document.querySelector('.modal-container');
     const modalCloseBtn = document.querySelector('.close-btn');
+    const form = document.querySelector('form');
     const titleInput = document.querySelector('#title');
     const descInput = document.querySelector('#description');
     const dateInput = document.querySelector('#due-date');
@@ -16,7 +17,7 @@ function cacheDom() {
     const projectInput = document.querySelector('#project');
     const submitBtn = document.querySelector('#submit-btn');
     const taskCloseBtn = document.querySelector('.close-button');
-    return {tasksBtn, todayBtn, weekBtn, projectWrapper, projectBtn, dropDownArrow, activeTasksContainer, newTaskBtn, modalContainer, modalCloseBtn, titleInput, descInput, dateInput, priorityInput, projectInput, submitBtn, taskCloseBtn}
+    return {tasksBtn, todayBtn, weekBtn, projectWrapper, projectBtn, dropDownArrow, activeTasksContainer, newTaskBtn, modalContainer, modalCloseBtn, form, titleInput, descInput, dateInput, priorityInput, projectInput, submitBtn, taskCloseBtn}
 };
 
 export {

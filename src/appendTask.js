@@ -10,7 +10,6 @@ function appendTask() {
     const priority = cache.priorityInput.value;
     const project = cache.projectInput.value;
     const task = createTask(title, description, dueDate, priority, project);
-    console.log(task);
     cache.activeTasksContainer.appendChild(task);
     closeModal();
 }

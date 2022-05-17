@@ -18,7 +18,8 @@ function bindEvent() {
         closeModal();
     });
 
-    cache.submitBtn.addEventListener('click', () => {
+    cache.form.addEventListener('submit', (e) => {
+        e.preventDefault();
         appendTask();
     });
 
