@@ -1,15 +1,17 @@
-function createTask(title, description, dueDate, priority) {
-    return {
+function createTask(title, description, dueDate, priority, project) {
+    const task = {
         title: title,
         description: description,
         dueDate: dueDate,
-        priority: priority
+        priority: priority,
+        project: project != null ? project : undefined
     };
-}
+    createTaskDOM(task);
+    return task
+};
 
-function createTaskDOM() {
-    
-}
+function createTaskDOM(task) {
+};
 
 export {
     createTask
