@@ -23,9 +23,11 @@
                         <label for="description">Description </label>
                         <input type="text" name="description" id="description">
                         <label for="due-date">Due Date</label>
-                        <input type="text" name="due-date" id="due-date" required>
+                        <input type="date" name="due-date" id="due-date" required>
                         <label for="priority">Priority</label>
                         <input type="text" name="priority" id="priority" required>
+                        <label for="project">Project</label>
+                        <input type="text" name="project" id="project" required>
                     </div>
                     <div class="submit-wrapper">
                         <input type="submit" value="Add task" id="submit-btn">
@@ -53,6 +55,7 @@
                 <div class="task container">
                     <h3>Chores</h3>
                     <p>Blah blah blah</p>
+                    <button class="close-button">&times;</button>
                     <div id="date-project-container">
                         <p class="date">5/16/2022</p><p class="project">Chores</p>
                     </div>
