@@ -5,7 +5,7 @@ function appendTask() {
     const priority = cache.priorityInput.value;
     const task = createTask(title, description, dueDate, priority);
     console.log(task);
-    cache.activeTasksContainer.appendChild(task);
+    // cache.activeTasksContainer.appendChild(task);
 }
 
 export {

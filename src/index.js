@@ -1,6 +1,7 @@
 import {createTask} from './createTask'
 import {bindEvent} from './bindEvents'
 import {cacheDom} from './cacheDom';
+// import {appendTask} from './appendTask';
 
 const cache = cacheDom();
 bindEvent();

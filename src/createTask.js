@@ -7,6 +7,10 @@ function createTask(title, description, dueDate, priority) {
     };
 }
 
+function createTaskDOM() {
+    
+}
+
 export {
     createTask
 }
