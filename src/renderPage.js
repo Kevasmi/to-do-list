@@ -4,14 +4,16 @@ import { createTaskDOM } from "./createTask";
 
 function renderPage() {
     const cache = cacheDom();
-    let tasks = JSON.parse(localStorage.getItem('tasks'));
-    tasks.forEach(task => {
-        const taskDom = createTaskDOM(task);
-        cache.activeTasksContainer.appendChild(taskDom);
-        console.log(taskDom);
-    });
+    if (localStorage.getItem("tasks") === null) {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    } else {
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
+        tasks.forEach(task => {
+            const taskDom = createTaskDOM(task);
+            cache.activeTasksContainer.appendChild(taskDom);
+        });
+    };
     bindEvent();
-    console.log(tasks);
 };
 
 export {

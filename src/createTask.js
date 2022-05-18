@@ -11,7 +11,6 @@ function createTask(title, description, dueDate, priority, project) {
     tasks.push(task);
     const taskDom = createTaskDOM(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    console.log(tasks);
     return taskDom
 };
 
@@ -44,7 +43,6 @@ function createTaskDOM(task) {
         const taskList = Array.from(document.querySelectorAll('.task'));
         const taskIndex = taskList.indexOf(e.target.parentNode);
         console.log(z.splice(0, 1));
-        console.log(z);
         localStorage.setItem('tasks', JSON.stringify(z));
         e.target.parentNode.remove();
     });
