@@ -1,6 +1,3 @@
-import {bindEvent} from './bindEvents';
+import { renderPage } from "./renderPage";
 
-bindEvent();
-console.log(tasks);
-const z = JSON.parse(localStorage.getItem('tasks'));
-console.log(z[0].title);
+renderPage();

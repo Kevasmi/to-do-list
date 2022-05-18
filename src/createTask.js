@@ -1,6 +1,6 @@
-const tasks = [];
-
 function createTask(title, description, dueDate, priority, project) {
+    let data = localStorage.getItem('tasks');
+    let tasks = data ? JSON.parse(data) : [];
     const task = {
         title: title,
         description: description,
@@ -40,11 +40,18 @@ function createTaskDOM(task) {
     dateProjectCont.appendChild(taskDueDate);
     dateProjectCont.appendChild(taskProject);
     taskCloseBtn.addEventListener('click', (e) => {
+        const z = Array.from(JSON.parse(localStorage.getItem('tasks')));
+        const taskList = Array.from(document.querySelectorAll('.task'));
+        const taskIndex = taskList.indexOf(e.target.parentNode);
+        console.log(z.splice(0, 1));
+        console.log(z);
+        localStorage.setItem('tasks', JSON.stringify(z));
         e.target.parentNode.remove();
     });
     return taskContainer
 };
 
 export {
-    createTask
+    createTask,
+    createTaskDOM
 }
