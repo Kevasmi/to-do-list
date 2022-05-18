@@ -42,7 +42,7 @@ function createTaskDOM(task) {
         const z = Array.from(JSON.parse(localStorage.getItem('tasks')));
         const taskList = Array.from(document.querySelectorAll('.task'));
         const taskIndex = taskList.indexOf(e.target.parentNode);
-        console.log(z.splice(0, 1));
+        z.splice(taskIndex, 1);
         localStorage.setItem('tasks', JSON.stringify(z));
         e.target.parentNode.remove();
     });
