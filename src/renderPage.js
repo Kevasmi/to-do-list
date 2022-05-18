@@ -4,7 +4,8 @@ import { createTaskDOM } from "./createTask";
 
 function renderPage() {
     const cache = cacheDom();
-    if (localStorage.getItem("tasks") === null) {
+    if (localStorage.getItem('tasks') === null) {
+        let tasks = [];
         localStorage.setItem('tasks', JSON.stringify(tasks));
     } else {
         let tasks = JSON.parse(localStorage.getItem('tasks'));
