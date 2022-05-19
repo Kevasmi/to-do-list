@@ -58,13 +58,12 @@ function bindEvent() {
                 const projectDOM = createProjectDOM(project);
                 cache.projectWrapper.appendChild(projectDOM);
                 console.log(project);
-                // console.log(tasks[count].project);
-                // project.addEventListener('click', project => {
-                //     if (project === tasks[count].project) {
-                //         const taskDOM = createTaskDOM(task[count]);
-                //         cache.activeTasksContainer.appendChild(taskDOM);
-                //     };
-                // });
+                project.addEventListener('click', project => {
+                    if (project === tasks[count].project) {
+                        const taskDOM = createTaskDOM(task[count]);
+                        cache.activeTasksContainer.appendChild(taskDOM);
+                    };
+                });
             });
         };
         projectList.forEach(project => project.remove());
