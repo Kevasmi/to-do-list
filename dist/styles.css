@@ -176,10 +176,12 @@ aside {
 .drop-down {
     height: 2rem;
     width: 2rem;
+    transform: rotate(180deg);
+
 }
 
 .rotate {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
 }
 
 .project-list {

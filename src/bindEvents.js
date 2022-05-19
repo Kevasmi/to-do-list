@@ -1,18 +1,19 @@
 import {cacheDom} from './cacheDom';
 import { closeModal, openModal } from './modal';
 import { appendTask } from './appendTask';
-import { createTaskDOM } from "./createTask";
+import { createTaskDOM, createProjectDOM } from "./createTask";
 import { formatISO9075, isThisWeek, parseISO } from 'date-fns';
 
 function bindEvent() {
     const cache = cacheDom();
+    let projects = JSON.parse(localStorage.getItem('projectList'));
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
 
     cache.tasksBtn.addEventListener('click', () => {
         const activeTasks = document.querySelectorAll('.task');
         for (const task of activeTasks) {
             task.remove();
         }
-        let tasks = JSON.parse(localStorage.getItem('tasks'));
         tasks.forEach(task => {
             const taskDOM = createTaskDOM(task);
             cache.activeTasksContainer.appendChild(taskDOM);
@@ -25,7 +26,6 @@ function bindEvent() {
         for (const task of activeTasks) {
             task.remove();
         }
-        let tasks = JSON.parse(localStorage.getItem('tasks'));
         const filteredTasks = tasks.filter(task => task.dueDate == formatISO9075(new Date(), { representation: 'date' }));
         filteredTasks.forEach(task => {
             const taskDOM = createTaskDOM(task);
@@ -39,7 +39,6 @@ function bindEvent() {
         for (const task of activeTasks) {
             task.remove();
         }
-        let tasks = JSON.parse(localStorage.getItem('tasks'));
         tasks.forEach(task => task.dueDateISO = parseISO(task.dueDate));
         let filteredTasks =  tasks.filter(task => isThisWeek(task.dueDateISO));
         filteredTasks.forEach(task => {
@@ -49,10 +48,26 @@ function bindEvent() {
     });
 
     cache.projectBtn.addEventListener('click', () => {
-        cache.projectWrapper.classList.toggle('height');
         cache.dropDownArrow.classList.toggle('rotate');
         const projectList = document.querySelectorAll('.project-list');
-        projectList.forEach(project => cache.projectWrapper.appendChild(project));
+        console.log(projectList)
+        let count = 0;
+        if (projectList.length == 0) {
+            projects.forEach(project => {
+                count++
+                const projectDOM = createProjectDOM(project);
+                cache.projectWrapper.appendChild(projectDOM);
+                console.log(project);
+                // console.log(tasks[count].project);
+                // project.addEventListener('click', project => {
+                //     if (project === tasks[count].project) {
+                //         const taskDOM = createTaskDOM(task[count]);
+                //         cache.activeTasksContainer.appendChild(taskDOM);
+                //     };
+                // });
+            });
+        };
+        projectList.forEach(project => project.remove());
     });
 
     cache.newTaskBtn.addEventListener('click', () => {

@@ -1,7 +1,6 @@
 import { bindEvent } from "./bindEvents";
 import { cacheDom } from "./cacheDom";
 import { createProjectDOM, createTaskDOM } from "./createTask";
-import { projectCount } from "./projectCount";
 
 function renderPage() {
     const cache = cacheDom();
@@ -18,15 +17,15 @@ function renderPage() {
     if (localStorage.getItem('projectList') === null) {
         let projectList = [];
         localStorage.setItem('projectList', JSON.stringify(projectList));
-    } else {
-        let projects = JSON.parse(localStorage.getItem('projectList'));
-        projects.forEach(project => {
-            const projectDOM = createProjectDOM(project);
-            cache.projectWrapper.appendChild(projectDOM);
-        });
-    };
+    }
+    // } else {
+    //     let projects = JSON.parse(localStorage.getItem('projectList'));
+    //     projects.forEach(project => {
+    //         const projectDOM = createProjectDOM(project);
+    //         cache.projectWrapper.appendChild(projectDOM);
+    //     });
+    // };
     bindEvent();
-    projectCount();
 };
 
 export {
