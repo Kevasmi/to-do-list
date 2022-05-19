@@ -191,10 +191,6 @@ aside {
     cursor: pointer;
 }
 
-.visible {
-
-}
-
 main {
     grid-area: main;
     background-color: hsl(0, 0%, 97%);
@@ -264,8 +260,12 @@ main {
     
 }
 
+.medium .date, .medium .project {
+    border: .5px solid rgb(255, 153, 0);
+}
+
 .low .date, .low .project {
-    border: .5px solid rgb(67, 207, 12);
+    border: .5px solid rgb(72, 255, 0);
 }
 
 .new-task {

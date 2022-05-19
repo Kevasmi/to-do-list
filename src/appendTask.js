@@ -22,11 +22,6 @@ function appendTask() {
         if (!projectList.some(check)) {
             cache.projectWrapper.appendChild(projectName);
         }
-        // projectList.forEach(projects => {
-        //     if (projects.textContent = projectName.textContent) {
-        //         cache.projectWrapper.appendChild(projectName);
-        //     }
-        // });
     }
     closeModal();
 };

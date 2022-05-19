@@ -3,7 +3,6 @@ function createTask(title, description, dueDate, priority, project) {
     let tasks = taskData ? JSON.parse(taskData) : [];
     let projectData = localStorage.getItem('projectList');
     let projects = projectData ? JSON.parse(projectData) : [];
-    console.log(projects);
     const task = {
         title: title,
         description: description,
@@ -12,11 +11,8 @@ function createTask(title, description, dueDate, priority, project) {
         project: project != null ? project : 'none'
     };
     const check = (project) => {
-        console.log(project)
-        console.log(project.textContent)
         return project == task.project
     }
-    console.log(task.project)
     tasks.push(task);
     if (!projects.some(check)) {
         projects.push(task.project)
