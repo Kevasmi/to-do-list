@@ -40,17 +40,20 @@ function bindEvent() {
             task.remove();
         }
         let tasks = JSON.parse(localStorage.getItem('tasks'));
-        // tasks.forEach(task => {
-        //     const taskDom = createTaskDOM(task);
-        //     cache.activeTasksContainer.appendChild(taskDom);
-        // });
-        // const parsedTasks = tasks.map(task => parseISO(task.dueDate));
-        // let parsedString = parseISO(tasks[0].dueDate);
-        // let result = isThisWeek(parsedString);
-        let parsedTasks = tasks.forEach(task => task.dueDate = parseISO(task.dueDate));
-        let filteredTasks = parsedTasks.filter(task => isThisWeek(task.dueDate));
-        // console.log(isThisWeek(parseISO(tasks[0].dueDate)))
+        tasks.forEach(task => task.dueDateISO = parseISO(task.dueDate));
+        let filteredTasks =  tasks.filter(task => isThisWeek(task.dueDateISO));
+        filteredTasks.forEach(task => {
+            const taskDom = createTaskDOM(task);
+            cache.activeTasksContainer.appendChild(taskDom);
+        });
+
+        const parsedTasks = tasks.map(task => parseISO(task.dueDate));
+        let parsedString = parseISO(tasks[0].dueDate);
+        let result = isThisWeek(parsedString);
+
+        // let filteredTasks = parsedTasks.filter(task => isThisWeek(task.dueDate));
         console.log(filteredTasks);
+        console.log(tasks);
     });
 
     cache.projectBtn.addEventListener('click', () => {
