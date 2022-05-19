@@ -1,5 +1,5 @@
 import { cacheDom } from "./cacheDom";
-import { createTask } from "./createTask";
+import { createProjectDOM, createTask } from "./createTask";
 import { closeModal } from "./modal";
 
 function appendTask() {
@@ -11,8 +11,25 @@ function appendTask() {
     const project = cache.projectInput.value;
     const task = createTask(title, description, dueDate, priority, project);
     cache.activeTasksContainer.appendChild(task);
+    const projectName = createProjectDOM(project);
+    const projectList = Array.from(cache.projectList);
+    if (projectList.length == 0) {
+        cache.projectWrapper.appendChild(projectName);
+    } else {
+        const check = (project) => {
+            return project.textContent == projectName.textContent
+        }
+        if (!projectList.some(check)) {
+            cache.projectWrapper.appendChild(projectName);
+        }
+        // projectList.forEach(projects => {
+        //     if (projects.textContent = projectName.textContent) {
+        //         cache.projectWrapper.appendChild(projectName);
+        //     }
+        // });
+    }
     closeModal();
-}
+};
 
 export {
     appendTask

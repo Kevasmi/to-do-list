@@ -2,7 +2,7 @@ import {cacheDom} from './cacheDom';
 import { closeModal, openModal } from './modal';
 import { appendTask } from './appendTask';
 import { createTaskDOM } from "./createTask";
-import { formatISO9075, isThisWeek, parse, parseISO } from 'date-fns';
+import { formatISO9075, isThisWeek, parseISO } from 'date-fns';
 
 function bindEvent() {
     const cache = cacheDom();
@@ -14,8 +14,8 @@ function bindEvent() {
         }
         let tasks = JSON.parse(localStorage.getItem('tasks'));
         tasks.forEach(task => {
-            const taskDom = createTaskDOM(task);
-            cache.activeTasksContainer.appendChild(taskDom);
+            const taskDOM = createTaskDOM(task);
+            cache.activeTasksContainer.appendChild(taskDOM);
         });
 
     });
@@ -28,8 +28,8 @@ function bindEvent() {
         let tasks = JSON.parse(localStorage.getItem('tasks'));
         const filteredTasks = tasks.filter(task => task.dueDate == formatISO9075(new Date(), { representation: 'date' }));
         filteredTasks.forEach(task => {
-            const taskDom = createTaskDOM(task);
-            cache.activeTasksContainer.appendChild(taskDom);
+            const taskDOM = createTaskDOM(task);
+            cache.activeTasksContainer.appendChild(taskDOM);
         });
 
     });
@@ -43,32 +43,16 @@ function bindEvent() {
         tasks.forEach(task => task.dueDateISO = parseISO(task.dueDate));
         let filteredTasks =  tasks.filter(task => isThisWeek(task.dueDateISO));
         filteredTasks.forEach(task => {
-            const taskDom = createTaskDOM(task);
-            cache.activeTasksContainer.appendChild(taskDom);
+            const taskDOM = createTaskDOM(task);
+            cache.activeTasksContainer.appendChild(taskDOM);
         });
-
-        const parsedTasks = tasks.map(task => parseISO(task.dueDate));
-        let parsedString = parseISO(tasks[0].dueDate);
-        let result = isThisWeek(parsedString);
-
-        // let filteredTasks = parsedTasks.filter(task => isThisWeek(task.dueDate));
-        console.log(filteredTasks);
-        console.log(tasks);
     });
 
     cache.projectBtn.addEventListener('click', () => {
         cache.projectWrapper.classList.toggle('height');
         cache.dropDownArrow.classList.toggle('rotate');
-        const activeTasks = document.querySelectorAll('.task');
-        for (const task of activeTasks) {
-            task.remove();
-        }
-        let tasks = JSON.parse(localStorage.getItem('tasks'));
-        tasks.forEach(task => {
-            const taskDom = createTaskDOM(task);
-            cache.activeTasksContainer.appendChild(taskDom);
-            console.log(cache.activeTasksContainer)
-        });
+        const projectList = document.querySelectorAll('.project-list');
+        projectList.forEach(project => cache.projectWrapper.appendChild(project));
     });
 
     cache.newTaskBtn.addEventListener('click', () => {

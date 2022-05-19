@@ -1,6 +1,9 @@
 function createTask(title, description, dueDate, priority, project) {
-    let data = localStorage.getItem('tasks');
-    let tasks = data ? JSON.parse(data) : [];
+    let taskData = localStorage.getItem('tasks');
+    let tasks = taskData ? JSON.parse(taskData) : [];
+    let projectData = localStorage.getItem('projectList');
+    let projects = projectData ? JSON.parse(projectData) : [];
+    console.log(projects);
     const task = {
         title: title,
         description: description,
@@ -8,9 +11,19 @@ function createTask(title, description, dueDate, priority, project) {
         priority: priority,
         project: project != null ? project : 'none'
     };
+    const check = (project) => {
+        console.log(project)
+        console.log(project.textContent)
+        return project == task.project
+    }
+    console.log(task.project)
     tasks.push(task);
+    if (!projects.some(check)) {
+        projects.push(task.project)
+    }
     const taskDom = createTaskDOM(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('projectList', JSON.stringify(projects));
     return taskDom
 };
 
@@ -22,7 +35,7 @@ function createTaskDOM(task) {
     const taskDueDate = document.createElement('p');
     const taskProject = document.createElement('p');
     const taskCloseBtn = document.createElement('button');
-    taskContainer.classList.add('task', 'container');
+    taskContainer.classList.add('task', 'container', `${task.priority}`.toLowerCase());
     taskCloseBtn.classList.add('close-button');
     dateProjectCont.setAttribute('id', 'date-project-container');
     taskDueDate.classList.add('date');
@@ -39,17 +52,27 @@ function createTaskDOM(task) {
     dateProjectCont.appendChild(taskDueDate);
     dateProjectCont.appendChild(taskProject);
     taskCloseBtn.addEventListener('click', (e) => {
-        const z = Array.from(JSON.parse(localStorage.getItem('tasks')));
+        const t = Array.from(JSON.parse(localStorage.getItem('tasks')));
         const taskList = Array.from(document.querySelectorAll('.task'));
         const taskIndex = taskList.indexOf(e.target.parentNode);
-        z.splice(taskIndex, 1);
-        localStorage.setItem('tasks', JSON.stringify(z));
+        t.splice(taskIndex, 1);
+        localStorage.setItem('tasks', JSON.stringify(t));
         e.target.parentNode.remove();
     });
-    return taskContainer
+    return taskContainer 
+};
+
+function createProjectDOM(project) {
+    const projectName = document.createElement('h3');
+    const projectNameContainer = document.createElement('div');
+    projectNameContainer.classList.add('project-list');
+    projectName.textContent = project;
+    projectNameContainer.appendChild(projectName);
+    return projectNameContainer
 };
 
 export {
     createTask,
-    createTaskDOM
+    createTaskDOM,
+    createProjectDOM
 }
