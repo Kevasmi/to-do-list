@@ -6,10 +6,12 @@ import { formatISO9075, isThisWeek, parseISO } from 'date-fns';
 
 function bindEvent() {
     const cache = cacheDom();
-    let projects = JSON.parse(localStorage.getItem('projectList'));
+
     let tasks = JSON.parse(localStorage.getItem('tasks'));
 
+
     cache.tasksBtn.addEventListener('click', () => {
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
         const activeTasks = document.querySelectorAll('.task');
         for (const task of activeTasks) {
             task.remove();
@@ -22,6 +24,7 @@ function bindEvent() {
     });
 
     cache.todayBtn.addEventListener('click', () => {
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
         const activeTasks = document.querySelectorAll('.task');
         for (const task of activeTasks) {
             task.remove();
@@ -36,6 +39,8 @@ function bindEvent() {
 
     cache.weekBtn.addEventListener('click', () => {
         const activeTasks = document.querySelectorAll('.task');
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
+
         for (const task of activeTasks) {
             task.remove();
         }
@@ -49,24 +54,23 @@ function bindEvent() {
 
     cache.projectBtn.addEventListener('click', () => {
         cache.dropDownArrow.classList.toggle('rotate');
+
+        let projects = JSON.parse(localStorage.getItem('projectCount'));
+        
         const projectList = document.querySelectorAll('.project-list');
-        let count = 0;
-        if (projectList.length == 0) {
-            let filteredProjects = projects.filter(a => a);
-            filteredProjects.forEach(project => {
-                count++
+        // console.log(projectList)
+        if (projectList.length === 0) {
+
+            for (const project in projects) {
                 const projectDOM = createProjectDOM(project);
-                cache.projectWrapper.appendChild(projectDOM);
-                console.log(projectList[count]);
-                    });
-            const newProjectList = document.querySelectorAll('.project-list');
-            console.log(newProjectList)
+                cache.projectWrapper.appendChild(projectDOM)
+            }
         } else {
+            const projectList = document.querySelectorAll('.project-list');
             projectList.forEach(project => project.remove());
-        };
+        }
         const newProjectList = document.querySelectorAll('.project-list');
-        if (typeof newProjectList !== undefined) {
-            console.log(newProjectList)
+        if (newProjectList !== undefined) {
             newProjectList.forEach(project => project.addEventListener('click', (e) => {
                 const activeTasks = document.querySelectorAll('.task');
                 for (const task of activeTasks) {
@@ -78,7 +82,7 @@ function bindEvent() {
                     cache.activeTasksContainer.appendChild(taskDOM);
                 });
             }));
-        };
+        }
     });
 
     cache.newTaskBtn.addEventListener('click', () => {
@@ -93,7 +97,7 @@ function bindEvent() {
         e.preventDefault();
         appendTask();
     });
-};
+}
 
 export {
     bindEvent
