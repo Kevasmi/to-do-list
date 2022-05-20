@@ -50,23 +50,35 @@ function bindEvent() {
     cache.projectBtn.addEventListener('click', () => {
         cache.dropDownArrow.classList.toggle('rotate');
         const projectList = document.querySelectorAll('.project-list');
-        console.log(projectList)
         let count = 0;
         if (projectList.length == 0) {
-            projects.forEach(project => {
+            let filteredProjects = projects.filter(a => a);
+            filteredProjects.forEach(project => {
                 count++
                 const projectDOM = createProjectDOM(project);
                 cache.projectWrapper.appendChild(projectDOM);
-                console.log(project);
-                project.addEventListener('click', project => {
-                    if (project === tasks[count].project) {
-                        const taskDOM = createTaskDOM(task[count]);
-                        cache.activeTasksContainer.appendChild(taskDOM);
-                    };
-                });
-            });
+                console.log(projectList[count]);
+                    });
+            const newProjectList = document.querySelectorAll('.project-list');
+            console.log(newProjectList)
+        } else {
+            projectList.forEach(project => project.remove());
         };
-        projectList.forEach(project => project.remove());
+        const newProjectList = document.querySelectorAll('.project-list');
+        if (typeof newProjectList !== undefined) {
+            console.log(newProjectList)
+            newProjectList.forEach(project => project.addEventListener('click', (e) => {
+                const activeTasks = document.querySelectorAll('.task');
+                for (const task of activeTasks) {
+                    task.remove();
+                };
+                let filteredTasks = tasks.filter(task => task.project === e.target.textContent)
+                filteredTasks.forEach(task => {
+                    const taskDOM = createTaskDOM(task);
+                    cache.activeTasksContainer.appendChild(taskDOM);
+                });
+            }));
+        };
     });
 
     cache.newTaskBtn.addEventListener('click', () => {
